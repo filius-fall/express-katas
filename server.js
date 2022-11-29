@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express()
 const mongo = require('mongoose')
+const bodyParser = require('body-parser')
 
 if(process.env.NODE_ENV != 'production'){
     require('dotenv').config()
@@ -16,13 +17,15 @@ app.set('layout','layouts/first_layout')
 
 
 const indexRouter = require('./routes/index')
-const authorRouter = require('./routes/authors')
+const authorRouter = require('./routes/authors');
 
 app.use(expressLayout)
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({limit:'10mb',extended:false}))
 
 app.use('/',indexRouter)
 app.use('/authors',authorRouter)
+
 
 
 mongo.connect(process.env.DATABASE_URI,{useNewUrlParser:true})

@@ -1,11 +1,11 @@
 
 <div class="mt-5">
-    <form class="form-group mx-3" action="/authors/" method="post">
+    <form class="form-group mx-3" action="/authors/new" method="post">
         <div class="row">
             <div class="col-6">
                 <label for="newAuthor">Add new author</label>
 
-                <input id="newAuthor" name="name" value="<%= author.name %>" class="form-control col-6">
+                <input id="newAuthor" name="name" value="<%= author.name %>" class="form-control col-6" required="false">
             </div>
         </div>
         <div class="mt-3 d-flex">
